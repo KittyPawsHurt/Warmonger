@@ -7,7 +7,8 @@
 
 # Imports #
 import collections
-
+import csv
+import pandas as pd
 
 # setup unit dictionaries #
 
@@ -42,12 +43,17 @@ def SetArmyFaction():
 # unit sorting test function #
 
 def PrintFactionUnits():
-    for SetArmyFaction in UnitList.get("faction"):
-        UnitList.fromkeys("faction")
-        print (UnitList.get("name"))
+    with open('UnitData.csv') as UnitData:
+        reader = csv.DictReader(UnitData)
+        for SetArmyFaction in csv.DictReader(UnitData):
+            print (csv.DictReader("name"))
 
 # Run Program #
-print (UnitList.maps)
+with open('UnitData.csv') as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        print(row)
+
 SetArmyCost()
 SetArmyFaction()
 PrintFactionUnits()
